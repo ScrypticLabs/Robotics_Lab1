@@ -89,7 +89,7 @@ if __name__ == '__main__':
 			elif feedback == "T":
 				distance = float(raw_input("Distance: "))
 				robot.translate(distance)
-	  		else:
+	  		elif feedback == "Q":
 				robot.shutdown()
 				break
     except Exception as e:
