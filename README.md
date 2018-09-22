@@ -18,7 +18,7 @@ To initiate ROS MASTER, type:
 ```bash
 $ roscore
 ```
-
+To clone and build the rbx1 repository for Indigo, type:
 ```bash
 $ cd ~/catkin_ws/
 $ git clone git@github.com:ScrypticLabs/Robotics_Lab1.git src
