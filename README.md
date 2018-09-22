@@ -1,20 +1,29 @@
-# Robotics_Lab1
 # Usage
 ## How to run the main script
 ### From command line
-(???) Make sure to run 'source /opt/ros/indigo/setup.bash' every time open up a new terminal (???) 
+
+NOTE: make sure to run 'source /opt/ros/indigo/setup.bash' in every command prompt if not in your bash profile 
+
+$ mkdir -p catkin_ws/src 
+$ cd ~/catkin_ws/src
+$ git clone https://github.com/pirobot/rbx1.git 
+$ cd rbx1
+$ git checkout indigo-devel
+$ cd ~/catkin_ws
+$ catkin_make
+$ source ~/catkin_ws/devel/setup.bash
+$ rospack profile
 
 To initiate ROS MASTER, type:
 ```bash
 $ roscore
 ```
 
-To run the python script, type:
 ```bash
 $ cd ~/catkin_ws/
+$ git clone git@github.com:ScrypticLabs/Robotics_Lab1.git src
 $ catkin_make
 $ source devel/setup.bash
-$ rosrun src timed_out_and_back.py
 ```
 
 To launch the simulated TurtleBot, type:
@@ -27,6 +36,12 @@ To bring up RViz, type:
 ```bash
 $ catkin_make
 $ rosrun rviz rviz -d `rospack find rbx1_nav`/sim.rv
+```
+
+To run the python script, type:
+```bash
+$ cd ~/catkin_ws
+$ python src/Robotics_Lab1/timed_out_and_back.py
 ```
 
 # Methods
