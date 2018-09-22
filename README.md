@@ -3,7 +3,7 @@
 ### From command line
 
 NOTE: make sure to run 'source /opt/ros/indigo/setup.bash' in every command prompt if not in your bash profile 
-
+```bash
 $ mkdir -p catkin_ws/src 
 $ cd ~/catkin_ws/src
 $ git clone https://github.com/pirobot/rbx1.git 
@@ -13,7 +13,7 @@ $ cd ~/catkin_ws
 $ catkin_make
 $ source ~/catkin_ws/devel/setup.bash
 $ rospack profile
-
+```
 To initiate ROS MASTER, type:
 ```bash
 $ roscore
