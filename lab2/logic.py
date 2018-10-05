@@ -4,7 +4,7 @@
 # @Author: abhi
 # @Date:   2018-10-05 12:56:59
 # @Last Modified by:   abhi
-# @Last Modified time: 2018-10-05 17:34:29
+# @Last Modified time: 2018-10-05 18:15:28
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -121,8 +121,7 @@ class Robot():
 					print(angular_distance)
 					if angular_distance != 0:
 						self.rotate(angular_distance)
-					else:
-						self.translate(SOME_DISTANCE)
+					self.translate(1)
 			# write code to detect collision
 			# if collision, trace = true, follow the boundary
 			else:
