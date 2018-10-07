@@ -16,6 +16,7 @@ $ source devel/setup.bash
 
 To launch the TurtleBot in Gazebo, type:
 ```bash
+$ cd ~/.ros
 $ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=$PWD/bug2_0.world
 ```
 
@@ -25,7 +26,7 @@ $ cd ~/catkin_ws
 $ ./bug2.py
 ```
 
-# Methods
+# Classes
 -Brain: initialize and commands the GPS of the robot. 
 
 -Robot: contorls the motion of the robot. 
@@ -33,5 +34,6 @@ $ ./bug2.py
 -Sensor: uses kinetic device to sense obstacles along the way to the m-line. 
 
 # Video
-[Watch demo here](https://www.youtube.com/watch?v=wNQavCcd48c&t=3s)
+[Watch bug2_0.world demo here](https://youtu.be/j3KI6px4v3k)
 
+[Watch bug2_1.world demo here](https://www.youtube.com/watch?v=fIg5r1BtLwE)
