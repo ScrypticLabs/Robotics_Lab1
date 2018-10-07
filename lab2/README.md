@@ -40,6 +40,8 @@ $ ./bug2.py
 
 [Watch bug2_2.world demo here](https://youtu.be/9idJ1o31Uzc)
 
+[Watch bug2_3.world demo here]()
+
 [Watch bug2_5.world demo here](https://youtu.be/8eloJV1KnjY)
 
 [Watch bug2_extra.world demo here](https://youtu.be/n0d9eq8PqXo)
