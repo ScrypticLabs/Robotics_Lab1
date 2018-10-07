@@ -35,4 +35,5 @@ $ ./bug2.py
 
 # Video
 [Watch bug2_0.world demo here](https://youtu.be/j3KI6px4v3k)
+
 [Watch bug2_1.world demo here](https://www.youtube.com/watch?v=fIg5r1BtLwE)
