@@ -42,3 +42,5 @@ $ ./bug2.py
 
 [Watch bug2_5.world demo here](https://youtu.be/8eloJV1KnjY)
 
+[Watch bug2_extra.world demo here](https://youtu.be/n0d9eq8PqXo)
+
