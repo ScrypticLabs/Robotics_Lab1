@@ -14,34 +14,23 @@ $ catkin_make
 $ source devel/setup.bash
 ```
 
-To launch the simulated TurtleBot, type:
+To launch the TurtleBot in Gazebo, type:
 ```bash
-$ catkin_make
-$ roslaunch rbx1_bringup fake_turtlebot.launch 
-```
-
-To bring up RViz, type:
-```bash
-$ catkin_make
-$ rosrun rviz rviz -d `rospack find rbx1_nav`/sim.rv
+$ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=$PWD/bug2_0.world
 ```
 
 To run the python script, type:
 ```bash
 $ cd ~/catkin_ws
-$ python src/Robotics_Lab1/timed_out_and_back.py
+$ ./bug2.py
 ```
 
 # Methods
--Main: constructs a robot object and processes user command until there is an error or the user chooses to quit.
+-Brain: initialize and commands the GPS of the robot. 
 
--Init: instantiates a robot with parameters. 
+-Robot: contorls the motion of the robot. 
 
--Shutdown: logs a message and stops the robot.
-
--Translate: incrementally moves the robot the distance requested by the user.
-
--Rotate: incrementally rotates the robot the degrees requested by the user.
+-Sensor: uses kinetic device to sense obstacles along the way to the m-line. 
 
 # Video
 [Watch demo here](https://www.youtube.com/watch?v=wNQavCcd48c&t=3s)
