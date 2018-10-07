@@ -1,0 +1,8 @@
+prefix=/home/abhi/Documents/Computational Aspects of Robotics/lab1/Robotics_Lab1/lab2/simulation_ws/devel
+
+Name: m2wr_description
+Description: Description of m2wr_description
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/abhi/Documents/Computational Aspects of Robotics/lab1/Robotics_Lab1/lab2/simulation_ws/devel/lib 
+Requires: 

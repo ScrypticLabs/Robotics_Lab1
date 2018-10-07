@@ -1,0 +1,2 @@
+two-wheeled-robot-simulation/m2wr_description:two-wheeled-robot-simulation/my_worlds
+-DCATKIN_DEVEL_PREFIX=/home/abhi/Documents/Computational Aspects of Robotics/lab1/Robotics_Lab1/lab2/simulation_ws/devel -DCMAKE_INSTALL_PREFIX=/home/abhi/Documents/Computational Aspects of Robotics/lab1/Robotics_Lab1/lab2/simulation_ws/install -G Unix Makefiles
