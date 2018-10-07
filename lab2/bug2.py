@@ -260,11 +260,11 @@ class Robot():
                 self.wobble(true_sensor_value=self.brain.get_memorized_right_sensor_value(), current_sensor_value=self.sensor.regions_["right"], linear_distance=0.2)
                 self.brain.update_position(self.get_current_position())
                 
-                # if self.brain.on_m_line():
-                #     if self.brain.closer_to_goal_than_collision((x,y)):
-                #         self.brain.remove_collision_point()
-                #         self.trace = False
-                #         print("go back to m-line")
+                 if self.brain.on_m_line():
+                     if self.brain.closer_to_goal_than_collision((x,y)):
+                         self.brain.remove_collision_point()
+                         self.trace = False
+                         print("go back to m-line")
 
             if not self.brain.has_collided():
                 # print(counter)
