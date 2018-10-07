@@ -32,7 +32,7 @@ class OutAndBack():
         rospy.on_shutdown(self.shutdown)
         
         # Publisher to control the robot's speed
-        self.cmd_vel = rospy.Publisher('/cmd_vel', Twist)
+        self.cmd_vel = rospy.Publisher('/cmd_vel_mux/input/navi', Twist)
         
         # How fast will we update the robot's movement?
         self.rate = 50
@@ -43,6 +43,23 @@ class OutAndBack():
         # Always stop the robot when shutting down the node.
         rospy.loginfo("Stopping the robot...")
         self.cmd_vel.publish(Twist())
+        rospy.sleep(1)
+
+    def _translate(self, linear_distance, linear_speed=0.2):
+        linear_speed *= abs(linear_distance)/linear_distance
+        linear_duration = linear_distance/linear_speed
+        
+        move_cmd = Twist()
+        move_cmd.linear.x = linear_speed
+        move_cmd.angular.z = 1.0
+        
+        ticks = int(linear_duration * self.rate)
+        for t in range(ticks):
+            self.cmd_vel.publish(move_cmd)
+            self.r.sleep()
+        
+        move_cmd = Twist()
+        self.cmd_vel.publish(move_cmd)
         rospy.sleep(1)
         
     def translate(self, linear_distance, linear_speed=0.2):
@@ -88,7 +105,7 @@ if __name__ == '__main__':
 				robot.rotate(distance)
 			elif feedback == "T":
 				distance = float(raw_input("Distance: "))
-				robot.translate(distance)
+				robot._translate(distance)
 	  		elif feedback == "Q":
 				robot.shutdown()
 				break

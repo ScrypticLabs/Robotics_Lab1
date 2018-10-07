@@ -4,7 +4,7 @@
 # @Author: abhi
 # @Date:   2018-10-05 12:56:59
 # @Last Modified by:   abhi
-# @Last Modified time: 2018-10-07 01:45:58
+# @Last Modified time: 2018-10-07 05:27:25
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -83,17 +83,17 @@ class Brain():
         self.collision_point = None
         self.next_direction = 0.0
 
-        self.MARGIN_OF_ERROR = 0.5
+        self.MARGIN_OF_ERROR = 0.3
         self.right_sensor_value = 0
 
-        self.M_Y_MARGIN_OF_ERROR = 0.3
+        self.M_Y_MARGIN_OF_ERROR = 0.25
 
     def is_equal(self, a, b):
         return abs(a-b) < self.MARGIN_OF_ERROR
 
     def is_m_equal(self, a, b):
-        # print(abs(a-b))
-        # print(self.M_Y_MARGIN_OF_ERROR)
+        print(abs(a-b))
+        print(self.M_Y_MARGIN_OF_ERROR)
         return abs(a-b) < self.M_Y_MARGIN_OF_ERROR
 
     def are_vectors_equal(self, a, b):
@@ -260,15 +260,16 @@ class Robot():
                 self.wobble(true_sensor_value=self.brain.get_memorized_right_sensor_value(), current_sensor_value=self.sensor.regions_["right"], linear_distance=0.2)
                 self.brain.update_position(self.get_current_position())
                 
-                if self.brain.on_m_line():
-                    if self.brain.closer_to_goal_than_collision((x,y)):
-                        self.brain.remove_collision_point()
-                        self.trace = False
-                        print("go back to m-line")
+                # if self.brain.on_m_line():
+                #     if self.brain.closer_to_goal_than_collision((x,y)):
+                #         self.brain.remove_collision_point()
+                #         self.trace = False
+                #         print("go back to m-line")
 
             if not self.brain.has_collided():
                 # print(counter)
                 if self.sensor.is_head_on_collision():
+                    self.brain.set_collision_point((x,y))
                     self.trace = True
                     counter += 1
                     # print("rotate")
@@ -276,9 +277,8 @@ class Robot():
                         self.rotate(0.2)
                     self.brain.remember_right_sensor_value(self.sensor.regions_['right'])
                     # self.translate_indef()
-                    self.translate(0.1)
+                    self.translate(0.2)
                     self.brain.update_position(self.get_current_position())
-                    self.brain.set_collision_point((x,y))
                 else:
                     angular_distance = self.brain.get_rotation_to_m_line()
                     print(angular_distance*180/pi)
@@ -287,7 +287,7 @@ class Robot():
                         # print("M Direction: "+str(self.brain.m_direction_vector))
                         # print("rotating to m-line")
                         self.rotate(angular_distance)
-                    self.translate(0.1)
+                    self.translate(0.2)
                     self.brain.update_position(self.get_current_position())
 
                     # self.brain.set_next_direction(-pi/2)
@@ -398,7 +398,7 @@ class Robot():
         self.cmd_vel.publish(move_cmd)
         rospy.sleep(1)
    
-    def rotate(self, angular_distance, angular_speed=0.1):
+    def rotate(self, angular_distance, angular_speed=0.5):
         # angular_distance *= pi/180
         angular_speed *= abs(angular_distance)/angular_distance
         angular_duration = angular_distance/angular_speed
