@@ -16,6 +16,7 @@ $ source devel/setup.bash
 
 To launch the TurtleBot in Gazebo, type:
 ```bash
+$ cd ~/.ros
 $ roslaunch turtlebot_gazebo turtlebot_world.launch world_file:=$PWD/bug2_0.world
 ```
 
