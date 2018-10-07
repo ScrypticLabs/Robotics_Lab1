@@ -4,7 +4,7 @@
 # @Author: abhi
 # @Date:   2018-10-05 12:56:59
 # @Last Modified by:   abhi
-# @Last Modified time: 2018-10-07 06:30:53
+# @Last Modified time: 2018-10-07 07:00:16
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -259,11 +259,14 @@ class Robot():
                 self.wobble(true_sensor_value=self.brain.get_memorized_right_sensor_value(), current_sensor_value=self.sensor.regions_["right"], linear_distance=0.2)
                 self.brain.update_position(self.get_current_position())
                 
-                # if self.brain.on_m_line():
-                #     if self.brain.closer_to_goal_than_collision((x,y)):
-                #         self.brain.remove_collision_point()
-                #         self.trace = False
-                #         print("go back to m-line")
+                if self.brain.on_m_line():
+                    if self.brain.closer_to_goal_than_collision((x,y)):
+                        self.brain.remove_collision_point()
+                        angular_distance = self.brain.get_rotation_to_m_line()
+                        self.rotate(angular_distance)
+                        self.translate(0.4)
+                        self.trace = False
+                        print("go back to m-line")
 
             if not self.brain.has_collided():
                 # print(counter)
