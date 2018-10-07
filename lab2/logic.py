@@ -4,7 +4,7 @@
 # @Author: abhi
 # @Date:   2018-10-05 12:56:59
 # @Last Modified by:   abhi
-# @Last Modified time: 2018-10-07 05:27:25
+# @Last Modified time: 2018-10-07 06:30:53
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -252,7 +252,6 @@ class Robot():
                 break
 
         while (not self.brain.reached_goal()):
-            # print(self.sensor.get_values())
             x,y = self.get_current_position()
 
             if self.trace:
@@ -274,10 +273,11 @@ class Robot():
                     counter += 1
                     # print("rotate")
                     while(self.sensor.regions_['front'] < 10):
+                        print(self.sensor.get_values())
                         self.rotate(0.2)
                     self.brain.remember_right_sensor_value(self.sensor.regions_['right'])
                     # self.translate_indef()
-                    self.translate(0.2)
+                    self.translate(0.1)
                     self.brain.update_position(self.get_current_position())
                 else:
                     angular_distance = self.brain.get_rotation_to_m_line()
@@ -287,7 +287,7 @@ class Robot():
                         # print("M Direction: "+str(self.brain.m_direction_vector))
                         # print("rotating to m-line")
                         self.rotate(angular_distance)
-                    self.translate(0.2)
+                    self.translate(0.1)
                     self.brain.update_position(self.get_current_position())
 
                     # self.brain.set_next_direction(-pi/2)

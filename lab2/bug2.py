@@ -4,7 +4,7 @@
 # @Author: abhi
 # @Date:   2018-10-05 12:56:59
 # @Last Modified by:   abhi
-# @Last Modified time: 2018-10-07 05:27:25
+# @Last Modified time: 2018-10-07 05:55:45
 
 import rospy
 from geometry_msgs.msg import Twist
@@ -398,7 +398,7 @@ class Robot():
         self.cmd_vel.publish(move_cmd)
         rospy.sleep(1)
    
-    def rotate(self, angular_distance, angular_speed=0.5):
+    def rotate(self, angular_distance, angular_speed=0.2):
         # angular_distance *= pi/180
         angular_speed *= abs(angular_distance)/angular_distance
         angular_duration = angular_distance/angular_speed
