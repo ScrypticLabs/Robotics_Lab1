@@ -1,5 +1,5 @@
-Usage
-How to run the main script
+###Usage
+##How to run the main script
 
 To initiate ROS MASTER, type:
 $ roscore
